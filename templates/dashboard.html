@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Platform Logo" class="logo">
+            <h1>GreenFuture Innovation Platform<h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('submit_idea') }}">Submit Idea</a></li>
+                <li><a href="{{ url_for('vote_idea') }}">Vote Ideas</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Welcome to the Dashboard</h1>
+        <p>Empowering employees worldwide to transform creative ideas into impactful innovations.</p>
+        <h2>Submitted Ideas</h2>
+
+        <!-- Ideas Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>User ID</th>
+                    <th>Votes</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for idea in ideas %}
+                    <tr>
+                        <td>{{ idea['title'] }}</td>
+                        <td>{{ idea['description'] }}</td>
+                        <td>{{ idea['user_id'] }}</td>
+                        <td>{{ vote_counts[idea['id']] }}</td>
+                        <td>
+                            {% if idea['id'] not in voted_ideas %}
+                                <form action="{{ url_for('vote_idea') }}" method="POST">
+                                    <input type="hidden" name="idea_id" value="{{ idea['id'] }}">
+                                    <button type="submit">Vote</button>
+                                </form>
+                            {% else %}
+                                <p>You have already voted</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GreenFuture. All rights reserved.</p>
+        <p>Empowering sustainable innovation across the globe.</p>
+    </footer>
+</body>
+</html>

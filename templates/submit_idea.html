@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Idea</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Platform Logo" class="logo">
+            <h1>Idea Submission Platform</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('submit_idea') }}">Submit Idea</a></li>
+                <li><a href="{{ url_for('vote_idea') }}">Vote Ideas</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Share Your Innovative Ideas</h1>
+            <p>Your ideas have the potential to make a difference. Submit your innovative concepts today!</p>
+
+            <form action="{{ url_for('submit_idea') }}" method="POST">
+                <div class="form-group">
+                    <label for="title">Idea Title:</label>
+                    <input type="text" id="title" name="title" required placeholder="Enter idea title">
+                </div>
+                <div class="form-group">
+                    <label for="description">Idea Description:</label>
+                    <textarea id="description" name="description" required placeholder="Describe your idea in detail"></textarea>
+                </div>
+                <button type="submit">Submit Idea</button>
+            </form>
+
+            {% if message %}
+                <p class="message">{{ message }}</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Idea Submission Platform. All rights reserved.</p>
+        <p>Empowering sustainable innovation across the globe.</p>
+    </footer>
+</body>
+</html>

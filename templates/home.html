@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Idea Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Platform Logo" class="logo">
+            <h1>GreenFuture Idea Platform</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Welcome and Success Stories Section -->
+        <div class="welcome-success-container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h2>Welcome to the GreenFuture Idea Platform</h2>
+                <p>At GreenFuture, we believe in empowering our employees to drive innovation. This platform allows you to share, vote, and collaborate on ideas to make sustainability more impactful globally.</p>
+            </div>
+
+            <!-- Success Stories Section -->
+            <div class="success-stories">
+                <h2>Success Stories</h2>
+                <p>Discover how cross-regional teams have collaborated to create solutions like the urban carbon capture project, combining expertise from Tokyo, Berlin, and Toronto offices.</p>
+            </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 GreenFuture. All rights reserved.</p>
+            <p>Empowering sustainable innovation across the globe.</p>
+        </div>
+    </footer>
+</body>
+</html>
